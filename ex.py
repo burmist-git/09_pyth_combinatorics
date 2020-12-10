@@ -9,6 +9,7 @@ Description : Simple reminder-training example.
 '''
 
 import numpy as np
+import math
 from itertools import combinations
 
 def printinfo(func):
@@ -18,9 +19,12 @@ def printinfo(func):
         func()
     return wrapper
 
+def C_n_k(n,k):
+    return math.factorial(n)/math.factorial(k)/math.factorial(n-k)
+
 @printinfo
 def combinations_test(vMin=0,vMax=5,n=3):
-    print('C_n^k = n!/k!/(n-k)!')
+    print('C_n^k = n!/k!/(n-k)! = ',C_n_k(n=(vMax-vMin),k=n))
     val=list(range(vMin,vMax))
     print(val)
     for permu in combinations(val, n):
